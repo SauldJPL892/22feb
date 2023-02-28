@@ -62,7 +62,7 @@
        			<option value="hamburgesa">hamburgesa</option>
        			<option value="hamburgesa">hamburgesa</option>
        			<option value="hamburgesa">hamburgesa</option>
-       		</select>ç
+       		</select>
        	</p>
        	<input type="submit" value="Enviar">
        	<input type="reset" value="Borrar">
@@ -70,8 +70,20 @@
 <script type="text/javascript">
 	const form=Document.getElementbyId("Pedido");
 	form.addEventListener("submit",funtion(event)){
-
-	}
+		event.preventDefault();
+		const formData=new formData(form);
+		const orden={
+			nombre:formData.get("nombre"),
+			apellido:formData.get("apellido"),
+			telefono:formData.get("telefono"),
+			direccion:formData.get("direccion"),
+			colonia:formData.get("colonia"),
+			sexo:formData.get("sexo"),
+			menu:formData.get("menu")
+		};
+		localStorage.setItem("orden",JSON.stringify(orden));
+		window.location.href="pedidorealizado.html";
+	};
 </script>
 </body>
 </html>
