@@ -47,11 +47,12 @@
        </p>
        <p>Telefono: <Input type ="text" name="telefono" id="telefono" size="40">
        </p>
-       <p>Sexo:
-        <input type="radio" name="sexo" value="Hombre"><azul>Hombre</azul>
-        <input type="radio" name="sexo" value="mujer"><rosa>Mujer</rosa><br></br>
+       <p>Servilletas:
+        <input type="radio" name="servilletas" value="si"><azul>Si</azul>
+        <input type="radio" name="servilletas" value="no"><azul>No</azul>
        	<p> Que vas a pedir:
        		<select name="menu" id="menu">
+       			<optgroup label="Lonches">
        			<option value="hamburgesa">hamburgesa</option>
        			<option value="hamburgesa">hamburgesa</option>
        			<option value="hamburgesa">hamburgesa</option>
@@ -62,13 +63,18 @@
        			<option value="hamburgesa">hamburgesa</option>
        			<option value="hamburgesa">hamburgesa</option>
        			<option value="hamburgesa">hamburgesa</option>
+       			</optgroup>
        		</select>
+       		<hr>
+       		<h1 style="color: blue" >Complemento</h1>
+       		<input type="checkbox" id="tomate" checked><label for="tomate" style="font-size: 20px;">Tomate</label><br>
+       		<input type="checkbox" id="cebolla" checked><label for="tomate" style="font-size: 20px;">Tomate</label><br>
        	</p>
        	<input type="submit" value="Enviar">
        	<input type="reset" value="Borrar">
 </form>
 <script type="text/javascript">
-	const form=Document.getElementbyId("Pedido");
+	const form=document.getElementbyId("pedido");
 	form.addEventListener("submit",funtion(event)){
 		event.preventDefault();
 		const formData=new formData(form);
@@ -78,8 +84,12 @@
 			telefono:formData.get("telefono"),
 			direccion:formData.get("direccion"),
 			colonia:formData.get("colonia"),
-			sexo:formData.get("sexo"),
-			menu:formData.get("menu")
+			servilletas:formData.get("servilletas"),
+			menu:formData.get("menu"),
+			  tomate:document.getElementbyId("tomate").checked ? "Si":"No",
+			  cebola:document.getElementbyId("cebolla").checked ? "Si":"No",
+			  pepinillos:document.getElementbyId("pepinillos").checked ? "Si":"No",
+			  pina:document.getElementbyId("pina").checked ? "Si":"No",
 		};
 		localStorage.setItem("orden",JSON.stringify(orden));
 		window.location.href="pedidorealizado.html";
